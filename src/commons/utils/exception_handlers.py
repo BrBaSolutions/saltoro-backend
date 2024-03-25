@@ -5,7 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from starlette.exceptions import HTTPException
 from starlette.responses import JSONResponse
 
-from src.commons.exceptions.app_exception import AppException
+from src.commons.exceptions.saltoro_exception import SaltoroException
 from src.commons.utils.api_response import ErrorResponse
 from src.commons.utils.exception_response import RequestValidationError
 
@@ -62,7 +62,7 @@ async def validation_exception_handler(
 
 
 async def app_exception_handler(
-        request: Request, exc: AppException
+        request: Request, exc: SaltoroException
 ):
     return generate_error_response(
         status_code=exc.status_code,

@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from starlette import status
 
 from src.commons.dependencies.db_dependency import get_db
+from src.commons.factory.client_factory import ClientFactory
 from src.commons.factory.service_factory import ServiceFactory
 from src.commons.utils.api_response import Response
 
@@ -16,10 +17,12 @@ router = APIRouter()
     tags=["COMMON"]
 )
 def test_api(
-        db: Session = Depends(get_db),
 ):
     return Response(
         status_code=status.HTTP_200_OK,
         message="Test-API",
-        data=ServiceFactory.get_common_service(db=db).test_api()
+        data=ClientFactory.get_ses_client().send_templated_email(
+            receivers=["geetansh2k1@gmail.com"],
+            template_data={'userName': 'Geetansh Sharma', 'userEmail': 'geetansh2k1@gmail.com', 'userPhone': '+1234567890', 'userCompany': 'ABC Company', 'service': 'Customer Support', 'query': 'I have a question regarding your product.'}
+        )
     )

@@ -4,3 +4,10 @@ from enum import Enum
 class ErrorCodes(int, Enum):
     # DB Error
     DB_EXECUTION_ERROR = 1001
+
+    # S3 - 1101-1120
+    ERROR_WHILE_GENERATING_UPLOAD_URL = 1101
+    ERROR_WHILE_GENERATING_DOWNLOAD_URL = 1102
+
+    # SES - 1121-1140
+    ERROR_SENDING_EMAIL = 1121

@@ -83,11 +83,3 @@ class S3Client:
             return True
         except self.client.exceptions.NoSuchKey:
             return False
-
-    def get_bucket_list(self):
-        response = self.client.list_buckets()
-        buckets: list[str] = []
-
-        for bucket in response['Buckets']:
-            buckets.append(bucket["Name"])
-        return buckets

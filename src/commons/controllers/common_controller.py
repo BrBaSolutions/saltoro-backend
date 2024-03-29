@@ -22,7 +22,14 @@ def test_api(
         status_code=status.HTTP_200_OK,
         message="Test-API",
         data=ClientFactory.get_ses_client().send_templated_email(
-            receivers=["geetansh2k1@gmail.com"],
-            template_data={'userName': 'Geetansh Sharma', 'userEmail': 'geetansh2k1@gmail.com', 'userPhone': '+1234567890', 'userCompany': 'ABC Company', 'service': 'Customer Support', 'query': 'I have a question regarding your product.'}
+            receivers=["brbasolutions@gmail.com"],
+            template_data={
+                'userName': 'Geetansh Garg',
+                'userEmail': 'geetansh2k1@gmail.com',
+                'userPhone': '+1234567890',
+                'userCompany': 'ABC Company',
+                'service': 'Customer Support',
+                'query': 'I have a question regarding your product.'
+            }
         )
     )

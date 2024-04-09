@@ -3,6 +3,7 @@ from typing import Union, Any
 
 from starlette import status
 
+from src.commons.enum.file_type import FileType
 from src.commons.exceptions.saltoro_exception import SaltoroException
 from src.commons.utils.logger import Logger
 
@@ -53,3 +54,13 @@ def convert_phone_number_for_db(phone_number: str):
 def is_valid_password_format(password: str) -> bool:
     password_pattern = r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9]).{8,}$'
     return re.match(password_pattern, password)
+
+
+def get_file_key(
+        file_type: FileType,
+        entity_id: str,
+        file_name: str
+) -> str:
+    return "/".join(
+        [file_type, entity_id, file_name]
+    )

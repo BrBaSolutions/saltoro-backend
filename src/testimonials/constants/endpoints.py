@@ -1,5 +1,4 @@
-from enum import Enum
-
-
-class Endpoints(str, Enum):
-    pass
+class Endpoints:
+    BASE = "/api/v1"
+    TESTIMONIAL = '/testimonial'
+    TESTIMONIALS = '/testimonials'

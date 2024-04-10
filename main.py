@@ -16,6 +16,8 @@ from src.commons.utils.api_response import ErrorResponse
 from src.commons.utils.exception_handlers import validation_exception_handler, app_exception_handler, \
     http_exception_handler
 from src.commons.utils.exception_response import RequestValidationErrorResponse
+from src.services.controllers import services_controller
+from src.strategies.controllers import strategy_controller
 from src.testimonials.controllers import testimonial_controller
 from src.user_auth.controllers import user_controller
 
@@ -66,6 +68,8 @@ app.add_middleware(
 app.include_router(common_controller.router)
 app.include_router(user_controller.router)
 app.include_router(testimonial_controller.router)
+app.include_router(services_controller.router)
+app.include_router(strategy_controller.router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8001)

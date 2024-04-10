@@ -38,3 +38,24 @@ class StrategyDetails(Strategy):
         ...,
         description="Is-Strategy still active?"
     )
+
+
+class StrategyUpdate(BaseModel):
+    heading: Optional[str] = Field(
+        None,
+        description="Title of the strategy"
+    )
+    sub_heading: Optional[str] = Field(
+        None,
+        description="Sub-Heading for the strategy"
+    )
+    description: Optional[str] = Field(
+        None,
+        description="Services description"
+    )
+
+    file_name: Optional[str] = Field(
+        None,
+        description="Asset-File Name"
+    )
+

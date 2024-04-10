@@ -38,3 +38,23 @@ class ServicesDetails(Services):
         ...,
         description="Is-Services still active?"
     )
+
+
+class ServicesUpdate(BaseModel):
+    heading: Optional[str] = Field(
+        None,
+        description="Title of the service"
+    )
+    sub_heading: Optional[str] = Field(
+        None,
+        description="Sub-Heading for the service"
+    )
+    description: Optional[str] = Field(
+        None,
+        description="Services description"
+    )
+
+    file_name: Optional[str] = Field(
+        None,
+        description="Asset-File Name"
+    )

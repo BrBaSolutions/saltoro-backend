@@ -86,7 +86,7 @@ class ServicesService:
             services_id=service_id
         )
 
-        if service_id is None:
+        if service is None:
             raise ServicesException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 error_code=ErrorCodes.SERVICES_NOT_FOUND,

@@ -12,3 +12,10 @@ class ErrorMessages(str, Enum):
 
     # SES Errors
     ERROR_SENDING_EMAIL = "Failed to send email to {receivers}"
+
+    # SALTORO
+    SALTORO_DETAILS_NOT_FOUND = "No company details added"
+    ADD_SALTORO_FAILED = "Only one entry can be made for company details"
+
+    # LINKS
+    LINK_NOT_FOUND = "Link not found"

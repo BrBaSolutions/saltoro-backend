@@ -19,3 +19,14 @@ class Saltoro(BaseModel):
 
     # animation s3 key
     logo_key = Column(String(255), nullable=False)
+
+    # address
+    address_line_1 = Column(Text, nullable=False)
+
+    city = Column(String(255), nullable=False)
+    state = Column(String(255), nullable=False)
+    pincode = Column(String(255), nullable=False)
+    country = Column(String(255), nullable=False)
+
+    phone_number = Column(String(255), nullable=False)
+    email = Column(String(255), nullable=False)

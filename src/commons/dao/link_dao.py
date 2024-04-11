@@ -3,22 +3,22 @@ from typing import Type, Union
 from sqlalchemy import and_
 from sqlalchemy.orm import Session
 
-from src.commons.entities.links import Links
+from src.commons.entities.link import Link
 from src.commons.utils.helpers import handle_db_error
 
 from src.commons.constants.error_codes import ErrorCodes as CommonErrorCodes
 from src.commons.constants.error_messages import ErrorMessages as CommonErrorMessages
 
 
-class LinksDao:
+class LinkDao:
     def __init__(self, db: Session):
         self.db = db
 
     def add_link(
             self,
-            link: Links,
+            link: Link,
             user_id: str
-    ) -> Links:
+    ) -> Link:
         try:
             link.save(self.db, user_id)
             return link
@@ -31,13 +31,13 @@ class LinksDao:
 
     def get_links(
             self
-    ) -> list[Type[Links]]:
+    ) -> list[Type[Link]]:
         try:
             return (
-                self.db.query(Links)
-                .order_by(Links.name)
+                self.db.query(Link)
+                .order_by(Link.name)
                 .filter(
-                    Links.is_active.__eq__(True),
+                    Link.is_active.__eq__(True),
                 )
                 .all()
             )
@@ -51,14 +51,14 @@ class LinksDao:
     def get_link_by_id(
             self,
             link_id: str
-    ) -> Union[Links, None]:
+    ) -> Union[Link, None]:
         try:
             return (
-                self.db.query(Links)
+                self.db.query(Link)
                 .filter(
                     and_(
-                        Links.id.__eq__(link_id),
-                        Links.is_active.__eq__(True),
+                        Link.id.__eq__(link_id),
+                        Link.is_active.__eq__(True),
                     )
                 )
                 .first()
@@ -72,9 +72,9 @@ class LinksDao:
 
     def update_link(
             self,
-            link: Links,
+            link: Link,
             user_id: str
-    ) -> Links:
+    ) -> Link:
         try:
             link.save(self.db, user_id)
             return link

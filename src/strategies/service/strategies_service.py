@@ -93,7 +93,7 @@ class StrategiesService:
             strategy_id=strategy_id
         )
 
-        if strategy_id is None:
+        if strategy is None:
             raise StrategyException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 error_code=ErrorCodes.STRATEGY_NOT_FOUND,

@@ -10,7 +10,7 @@ from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
 
 from src.commons.config.database import engine, Base
-from src.commons.controllers import common_controller
+from src.commons.controllers import common_controller, link_controller, saltoro_controller
 from src.commons.exceptions.saltoro_exception import SaltoroException
 from src.commons.utils.api_response import ErrorResponse
 from src.commons.utils.exception_handlers import validation_exception_handler, app_exception_handler, \
@@ -74,6 +74,8 @@ app.include_router(services_controller.router)
 app.include_router(strategy_controller.router)
 app.include_router(company_relationship_controller.router)
 app.include_router(contact_us_controller.router)
+app.include_router(saltoro_controller.router)
+app.include_router(link_controller.router)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8001)

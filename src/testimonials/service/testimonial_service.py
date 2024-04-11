@@ -86,7 +86,7 @@ class TestimonialService:
             testimonial_id=testimonial_id
         )
 
-        if testimonial_id is None:
+        if testimonial is None:
             raise TestimonialException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 error_code=ErrorCodes.TESTIMONIAL_NOT_FOUND,

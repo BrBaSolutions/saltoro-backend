@@ -87,7 +87,7 @@ class CompanyRelationshipService:
             company_relationship_id=company_relationship_id
         )
 
-        if company_relationship_id is None:
+        if company_relationship is None:
             raise CompanyRelationshipException(
                 status_code=status.HTTP_404_NOT_FOUND,
                 error_code=ErrorCodes.COMPANY_RELATIONSHIP_NOT_FOUND,

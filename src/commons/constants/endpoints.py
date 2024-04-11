@@ -2,4 +2,11 @@ from enum import Enum
 
 
 class Endpoints(str, Enum):
-    pass
+    BASE = "/api/v1"
+
+    # SALTORO
+    SALTORO = BASE + "/saltoro"
+
+    # LINKS
+    LINK = BASE + "/link"
+    LINKS = BASE + "/links"

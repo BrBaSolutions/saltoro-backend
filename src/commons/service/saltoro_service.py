@@ -3,7 +3,8 @@ from typing import Union
 from sqlalchemy.orm import Session
 from starlette import status
 
-from src.commons.client.aws.s3_client import S3Client
+from src.commons.constants.error_codes import ErrorCodes
+from src.commons.constants.error_messages import ErrorMessages
 from src.commons.dao.saltoro_dao import SaltoroDao
 from src.commons.dto.request.saltoro import SaltoroDetails, SaltoroCreate, SaltoroUpdate
 from src.commons.entities.saltoro import Saltoro
@@ -12,8 +13,6 @@ from src.commons.exceptions.saltoro_exception import SaltoroException
 from src.commons.factory.client_factory import ClientFactory
 from src.commons.mapper.saltoro_mapper import SaltoroMapper
 from src.commons.utils.helpers import get_file_key
-from src.commons.constants.error_codes import ErrorCodes
-from src.commons.constants.error_messages import ErrorMessages
 
 
 class SaltoroService:

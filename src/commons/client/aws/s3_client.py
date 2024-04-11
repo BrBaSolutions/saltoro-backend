@@ -52,7 +52,7 @@ class S3Client:
     def get_download_pre_signed_url(
             self,
             file_key: str,
-            expiration: int = 86400 # 24 hours
+            expiration: int = 86400  # 24 hours
     ) -> str:
         try:
             url = self.client.generate_presigned_url(

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import Field
 
 from src.commons.utils.api_response import Response
 from src.user_auth.dto.common.token import Token

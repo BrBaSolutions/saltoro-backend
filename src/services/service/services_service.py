@@ -3,7 +3,6 @@ from typing import Union
 from sqlalchemy.orm import Session
 from starlette import status
 
-from src.commons.client.aws.s3_client import S3Client
 from src.commons.enum.file_type import FileType
 from src.commons.factory.client_factory import ClientFactory
 from src.commons.utils.helpers import get_file_key

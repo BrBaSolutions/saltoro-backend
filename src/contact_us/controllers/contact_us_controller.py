@@ -40,7 +40,7 @@ def create_contact_us(
     response_model=ContactUsListResponse,
     tags=["CONTACT US"]
 )
-def get_contact_uss(
+def get_all_contact_us(
         current_user: Annotated[
             UserDetails,
             Depends(get_current_user)

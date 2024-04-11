@@ -85,4 +85,3 @@ class ContactUsService:
             self._convert_contact_us_entity_to_dto(contact_us=contact_us)
             for contact_us in contact_uss
         ]
-

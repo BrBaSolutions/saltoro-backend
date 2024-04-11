@@ -3,7 +3,8 @@ from typing import Union
 from sqlalchemy.orm import Session
 from starlette import status
 
-from src.commons.client.aws.s3_client import S3Client
+from src.commons.constants.error_codes import ErrorCodes
+from src.commons.constants.error_messages import ErrorMessages
 from src.commons.dao.link_dao import LinkDao
 from src.commons.dto.request.link import LinkDetails, LinkCreate, LinkUpdate
 from src.commons.entities.link import Link
@@ -12,8 +13,6 @@ from src.commons.exceptions.link_exception import LinkException
 from src.commons.factory.client_factory import ClientFactory
 from src.commons.mapper.link_mapper import LinkMapper
 from src.commons.utils.helpers import get_file_key
-from src.commons.constants.error_codes import ErrorCodes
-from src.commons.constants.error_messages import ErrorMessages
 
 
 class LinkService:

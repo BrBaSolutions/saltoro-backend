@@ -1,6 +1,6 @@
 import uuid
 
-from sqlalchemy import Column, String, Text, Boolean, Numeric, ForeignKey
+from sqlalchemy import Column, String, Text, Boolean
 
 from src.strategies.entities.base_model import BaseModel
 

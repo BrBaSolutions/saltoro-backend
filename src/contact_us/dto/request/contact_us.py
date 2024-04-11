@@ -3,9 +3,10 @@ from typing import Optional
 from pydantic import BaseModel, Field, EmailStr, field_validator
 
 from src.commons.utils.helpers import convert_phone_number_for_db
+from src.services.dto.request.services import ServicesDetails
 
 
-class ContactUsCreate(BaseModel):
+class ContactUs(BaseModel):
     name: str = Field(
         ...,
         description="Name of the person"
@@ -24,11 +25,6 @@ class ContactUsCreate(BaseModel):
         description="Company-Name"
     )
 
-    service_id: str = Field(
-        ...,
-        description="Service-Opted by the person"
-    )
-
     message: Optional[str] = Field(
         None,
         description="Query-Message of the person"
@@ -40,8 +36,19 @@ class ContactUsCreate(BaseModel):
             return convert_phone_number_for_db(value)
 
 
-class ContactUsDetails(ContactUsCreate):
+class ContactUsCreate(ContactUs):
+    service_id: str = Field(
+        ...,
+        description="Service-Opted by the person"
+    )
+
+
+class ContactUsDetails(ContactUs):
     id: str = Field(
         ...,
-        description="Primary-Key Id of the testimonial"
+        description="Primary-Key Id of the Contact-Us"
+    )
+    service_details: ServicesDetails = Field(
+        ...,
+        description="Service for which user queried for"
     )

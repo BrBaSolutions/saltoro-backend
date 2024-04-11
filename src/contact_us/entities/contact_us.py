@@ -1,11 +1,10 @@
 import uuid
 
 from sqlalchemy import Column, String, Text, ForeignKey
+from src.commons.config.database import Base
 
-from src.strategies.entities.base_model import BaseModel
 
-
-class ContactUs(BaseModel):
+class ContactUs(Base):
     __tablename__ = "contact_us"
 
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))

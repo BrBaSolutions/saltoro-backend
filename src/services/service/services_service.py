@@ -95,6 +95,18 @@ class ServicesService:
 
         return service
 
+    def get_services_details_by_id(
+            self,
+            service_id: str
+    ) -> ServicesDetails:
+        service: Services = self._get_service_by_id(
+            service_id=service_id
+        )
+
+        return self._convert_service_entity_to_dto(
+            service=service
+        )
+
     def get_services(
             self
     ) -> list[ServicesDetails]:

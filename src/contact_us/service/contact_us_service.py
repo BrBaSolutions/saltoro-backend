@@ -1,5 +1,8 @@
 from sqlalchemy.orm import Session
 
+from src.commons.client.config_client import ConfigClient
+from src.commons.factory.client_factory import ClientFactory
+from src.commons.utils.helpers import create_send_contact_us_form_email_template_data
 from src.contact_us.dao.contact_us_dao import ContactUsDao
 from src.contact_us.dto.request.contact_us import ContactUsDetails, ContactUsCreate
 from src.contact_us.entities.contact_us import ContactUs
@@ -20,6 +23,7 @@ class ContactUsService:
         self.contact_us_dao = ContactUsDao(db=db)
         self.services_service = ServicesService(db=db)
         self.contact_us_mapper = ContactUsMapper()
+        self.ses_client = ClientFactory.get_ses_client()
 
     def _convert_contact_us_entity_to_dto(
             self,
@@ -54,11 +58,23 @@ class ContactUsService:
             contact_us_create=contact_us_create,
         )
 
-        # TODO: call email service to send email to the admin
-
-        return self._convert_contact_us_entity_to_dto(
+        contact_us_details: ContactUsDetails = self._convert_contact_us_entity_to_dto(
             contact_us=contact_us
         )
+
+        self.ses_client.send_templated_email(
+            receivers=[ConfigClient.get_property(section='AWS', name='EMAIL')],
+            template_data=create_send_contact_us_form_email_template_data(
+                name=contact_us_details.name,
+                email=contact_us_details.email,
+                phone_number=contact_us_details.phone_number,
+                company_name=contact_us_details.company_name,
+                service=contact_us_details.service_details.heading,
+                query=contact_us_details.message
+            )
+        )
+
+        return contact_us_details
 
     def get_all_contact_us(
             self

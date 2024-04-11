@@ -9,6 +9,7 @@ from src.commons.dto.request.link import LinkDetails, LinkCreate, LinkUpdate
 from src.commons.entities.link import Link
 from src.commons.enum.file_type import FileType
 from src.commons.exceptions.link_exception import LinkException
+from src.commons.factory.client_factory import ClientFactory
 from src.commons.mapper.link_mapper import LinkMapper
 from src.commons.utils.helpers import get_file_key
 from src.commons.constants.error_codes import ErrorCodes
@@ -27,7 +28,7 @@ class LinkService:
         self.db = db
         self.link_dao = LinkDao(db=db)
         self.link_mapper = LinkMapper()
-        self.s3_client = S3Client()
+        self.s3_client = ClientFactory.get_s3_client()
 
     def _convert_link_entity_to_dto(
             self,

@@ -9,6 +9,7 @@ from src.commons.dto.request.saltoro import SaltoroDetails, SaltoroCreate, Salto
 from src.commons.entities.saltoro import Saltoro
 from src.commons.enum.file_type import FileType
 from src.commons.exceptions.saltoro_exception import SaltoroException
+from src.commons.factory.client_factory import ClientFactory
 from src.commons.mapper.saltoro_mapper import SaltoroMapper
 from src.commons.utils.helpers import get_file_key
 from src.commons.constants.error_codes import ErrorCodes
@@ -27,7 +28,7 @@ class SaltoroService:
         self.db = db
         self.saltoro_dao = SaltoroDao(db=db)
         self.saltoro_mapper = SaltoroMapper()
-        self.s3_client = S3Client()
+        self.s3_client = ClientFactory.get_s3_client()
 
     def _convert_saltoro_entity_to_dto(
             self,

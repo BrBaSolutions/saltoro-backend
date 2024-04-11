@@ -1,6 +1,7 @@
 import re
 from typing import Union, Any
 
+from pydantic import EmailStr
 from starlette import status
 
 from src.commons.enum.file_type import FileType
@@ -64,3 +65,21 @@ def get_file_key(
     return "/".join(
         [file_type, entity_id, file_name]
     )
+
+
+def create_send_contact_us_form_email_template_data(
+        name: str,
+        email: EmailStr,
+        phone_number: str,
+        company_name: str,
+        service: str,
+        query: str
+):
+    return {
+        'userName': name,
+        'userEmail': email,
+        'userPhone': phone_number,
+        'userCompany': company_name,
+        'service': service,
+        'query': query
+    }

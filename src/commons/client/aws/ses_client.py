@@ -25,7 +25,7 @@ class SESClient:
             receivers: list[EmailStr],
             template_data: dict,
             email_template: EmailTemplates = EmailTemplates.QUERY_NOTIFICATION_TEMPLATE,
-            sender: EmailStr = ConfigClient.get_property(section='AWS', name='SENDER_EMAIL')
+            sender: EmailStr = ConfigClient.get_property(section='AWS', name='EMAIL')
     ):
         try:
             response = self.client.send_templated_email(

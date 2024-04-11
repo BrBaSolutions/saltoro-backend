@@ -10,7 +10,7 @@ from starlette.exceptions import HTTPException
 from starlette.middleware.cors import CORSMiddleware
 
 from src.commons.config.database import engine, Base
-from src.commons.controllers import common_controller, link_controller, saltoro_controller
+from src.commons.controllers import link_controller, saltoro_controller
 from src.commons.exceptions.saltoro_exception import SaltoroException
 from src.commons.utils.api_response import ErrorResponse
 from src.commons.utils.exception_handlers import validation_exception_handler, app_exception_handler, \
@@ -67,7 +67,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.include_router(common_controller.router)
 app.include_router(user_controller.router)
 app.include_router(testimonial_controller.router)
 app.include_router(services_controller.router)

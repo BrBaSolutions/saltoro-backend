@@ -5,6 +5,7 @@ from starlette import status
 
 from src.commons.client.aws.s3_client import S3Client
 from src.commons.enum.file_type import FileType
+from src.commons.factory.client_factory import ClientFactory
 from src.commons.utils.helpers import get_file_key
 from src.company_relationships.constants.error_codes import ErrorCodes
 from src.company_relationships.constants.error_messages import ErrorMessages
@@ -28,7 +29,7 @@ class CompanyRelationshipService:
         self.db = db
         self.company_relationship_dao = CompanyRelationshipDao(db=db)
         self.company_relationship_mapper = CompanyRelationshipMapper()
-        self.s3_client = S3Client()
+        self.s3_client = ClientFactory.get_s3_client()
 
     def _convert_company_relationship_entity_to_dto(
             self,

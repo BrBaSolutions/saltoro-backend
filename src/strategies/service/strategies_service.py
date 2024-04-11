@@ -5,6 +5,7 @@ from starlette import status
 
 from src.commons.client.aws.s3_client import S3Client
 from src.commons.enum.file_type import FileType
+from src.commons.factory.client_factory import ClientFactory
 from src.commons.utils.helpers import get_file_key
 from src.strategies.constants.error_codes import ErrorCodes
 from src.strategies.constants.error_messages import ErrorMessages
@@ -27,7 +28,7 @@ class StrategiesService:
         self.db = db
         self.strategy_dao = StrategyDao(db=db)
         self.strategy_mapper = StrategyMapper()
-        self.s3_client = S3Client()
+        self.s3_client = ClientFactory.get_s3_client()
 
     def _convert_strategy_entity_to_dto(
             self,

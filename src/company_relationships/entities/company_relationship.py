@@ -6,7 +6,7 @@ from src.company_relationships.enum.company_relationship_types import CompanyRel
 from src.strategies.entities.base_model import BaseModel
 
 
-class CompanyRelationships(BaseModel):
+class CompanyRelationship(BaseModel):
     __tablename__ = "company_relationships"
 
     id = Column(String(36), primary_key=True, default=lambda: str(uuid.uuid4()))

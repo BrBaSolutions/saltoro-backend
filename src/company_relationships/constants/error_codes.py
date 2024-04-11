@@ -2,4 +2,4 @@ from enum import Enum
 
 
 class ErrorCodes(int, Enum):
-    pass
+    COMPANY_RELATIONSHIP_NOT_FOUND = 13001

@@ -7,80 +7,80 @@ from src.commons.utils.helpers import handle_db_error
 
 from src.commons.constants.error_codes import ErrorCodes as CommonErrorCodes
 from src.commons.constants.error_messages import ErrorMessages as CommonErrorMessages
-from src.services.entities.services import Services
+from src.company_relationships.entities.company_relationship import CompanyRelationship
 
 
-class ServicesDao:
+class CompanyRelationshipDao:
     def __init__(self, db: Session):
         self.db = db
 
-    def add_service(
+    def add_company_relationship(
             self,
-            services: Services,
+            company_relationship: CompanyRelationship,
             user_id: str
-    ) -> Services:
+    ) -> CompanyRelationship:
         try:
-            services.save(self.db, user_id)
-            return services
+            company_relationship.save(self.db, user_id)
+            return company_relationship
         except Exception as e:
             handle_db_error(
-                "services -> services_dao -> add_service",
+                "company_relationship -> company_relationship_dao -> add_company_relationship",
                 CommonErrorCodes.DB_EXECUTION_ERROR,
                 CommonErrorMessages.DB_EXECUTION_ERROR, e
             )
 
-    def get_services(
+    def get_company_relationships(
             self
-    ) -> list[Type[Services]]:
+    ) -> list[Type[CompanyRelationship]]:
         try:
             return (
-                self.db.query(Services)
-                .order_by(Services.heading)
+                self.db.query(CompanyRelationship)
+                .order_by(CompanyRelationship.name)
                 .filter(
-                    Services.is_active.__eq__(True),
+                    CompanyRelationship.is_active.__eq__(True),
                 )
                 .all()
             )
         except Exception as e:
             handle_db_error(
-                "services -> services_dao -> get_services",
+                "company_relationship -> company_relationship_dao -> get_company_relationships",
                 CommonErrorCodes.DB_EXECUTION_ERROR,
                 CommonErrorMessages.DB_EXECUTION_ERROR, e
             )
 
-    def get_service_by_id(
+    def get_company_relationship_by_id(
             self,
-            services_id: str
-    ) -> Union[Services, None]:
+            company_relationship_id: str
+    ) -> Union[CompanyRelationship, None]:
         try:
             return (
-                self.db.query(Services)
+                self.db.query(CompanyRelationship)
                 .filter(
                     and_(
-                        Services.id.__eq__(services_id),
-                        Services.is_active.__eq__(True),
+                        CompanyRelationship.id.__eq__(company_relationship_id),
+                        CompanyRelationship.is_active.__eq__(True),
                     )
                 )
                 .first()
             )
         except Exception as e:
             handle_db_error(
-                "services -> services_dao -> get_service_by_id",
+                "company_relationship -> company_relationship_dao -> get_company_relationship_by_id",
                 CommonErrorCodes.DB_EXECUTION_ERROR,
                 CommonErrorMessages.DB_EXECUTION_ERROR, e
             )
 
-    def update_service(
+    def update_company_relationship(
             self,
-            services: Services,
+            company_relationship: CompanyRelationship,
             user_id: str
-    ) -> Services:
+    ) -> CompanyRelationship:
         try:
-            services.save(self.db, user_id)
-            return services
+            company_relationship.save(self.db, user_id)
+            return company_relationship
         except Exception as e:
             handle_db_error(
-                "services -> services_dao -> update_service",
+                "company_relationship -> company_relationship_dao -> update_company_relationship",
                 CommonErrorCodes.DB_EXECUTION_ERROR,
                 CommonErrorMessages.DB_EXECUTION_ERROR, e
             )

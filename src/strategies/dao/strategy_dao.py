@@ -35,7 +35,7 @@ class StrategyDao:
         try:
             return (
                 self.db.query(Strategy)
-                .order_by(Strategy.name)
+                .order_by(Strategy.heading)
                 .filter(
                     Strategy.is_active.__eq__(True),
                 )

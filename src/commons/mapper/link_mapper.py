@@ -1,3 +1,5 @@
+import uuid
+
 from src.commons.dto.request.link import LinkDetails, LinkCreate
 from src.commons.entities.link import Link
 
@@ -18,5 +20,6 @@ class LinkMapper:
             link_create: LinkCreate
     ) -> Link:
         return Link(
+            id=str(uuid.uuid4()),
             **link_create.model_dump(exclude=["file_name"])
         )

@@ -1,3 +1,5 @@
+import uuid
+
 from src.testimonials.dto.request.testimonial import TestimonialDetails, TestimonialCreate
 from src.testimonials.entities.testimonials import Testimonial
 
@@ -18,5 +20,6 @@ class TestimonialMapper:
             testimonial_create: TestimonialCreate
     ) -> Testimonial:
         return Testimonial(
+            id=str(uuid.uuid4()),
             **testimonial_create.model_dump(exclude=["file_name"])
         )

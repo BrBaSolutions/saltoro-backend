@@ -62,6 +62,7 @@ def get_file_key(
         entity_id: str,
         file_name: str
 ) -> str:
+    print(file_type, entity_id, file_name)
     return "/".join(
         [file_type, entity_id, file_name]
     )

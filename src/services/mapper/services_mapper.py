@@ -1,3 +1,5 @@
+import uuid
+
 from src.services.dto.request.services import ServicesDetails, ServicesCreate
 from src.services.entities.services import Services
 
@@ -18,5 +20,6 @@ class ServicesMapper:
             service: ServicesCreate
     ) -> Services:
         return Services(
+            id=str(uuid.uuid4()),
             **service.model_dump(exclude=["file_name"])
         )

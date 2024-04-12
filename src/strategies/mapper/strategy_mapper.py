@@ -1,3 +1,5 @@
+import uuid
+
 from src.strategies.dto.request.strategy import StrategyDetails, StrategyCreate
 from src.strategies.entities.strategy import Strategy
 
@@ -18,5 +20,6 @@ class StrategyMapper:
             strategy: StrategyCreate
     ) -> Strategy:
         return Strategy(
+            id=str(uuid.uuid4()),
             **strategy.model_dump(exclude=["file_name"])
         )

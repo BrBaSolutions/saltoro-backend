@@ -1,3 +1,5 @@
+import uuid
+
 from src.commons.dto.request.saltoro import SaltoroDetails, SaltoroCreate
 from src.commons.entities.saltoro import Saltoro
 
@@ -18,5 +20,6 @@ class SaltoroMapper:
             saltoro_create: SaltoroCreate
     ) -> Saltoro:
         return Saltoro(
+            id=str(uuid.uuid4()),
             **saltoro_create.model_dump(exclude=["file_name"])
         )

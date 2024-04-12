@@ -1,3 +1,5 @@
+import uuid
+
 from src.company_relationships.dto.request.company_relationship import CompanyRelationshipDetails, \
     CompanyRelationshipCreate
 from src.company_relationships.entities.company_relationship import CompanyRelationship
@@ -19,5 +21,6 @@ class CompanyRelationshipMapper:
             company_relationship_create: CompanyRelationshipCreate
     ) -> CompanyRelationship:
         return CompanyRelationship(
+            id=str(uuid.uuid4()),
             **company_relationship_create.model_dump(exclude=["file_name"])
         )

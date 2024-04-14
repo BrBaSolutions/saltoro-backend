@@ -52,7 +52,7 @@ class ServicesService:
         )
 
         service.asset_key = get_file_key(
-            file_type=FileType.TESTIMONIAL,
+            file_type=FileType.SERVICES,
             entity_id=service.id,
             file_name=service_create.file_name
         )
@@ -146,7 +146,7 @@ class ServicesService:
                 if field == "file_name":
                     file_updated = True
                     existing_service.asset_key = get_file_key(
-                        file_type=FileType.TESTIMONIAL,
+                        file_type=FileType.SERVICES,
                         entity_id=existing_service.id,
                         file_name=service_update.file_name
                     )

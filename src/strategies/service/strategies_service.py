@@ -52,7 +52,7 @@ class StrategiesService:
         )
 
         strategy.asset_key = get_file_key(
-            file_type=FileType.TESTIMONIAL,
+            file_type=FileType.STRATEGIES,
             entity_id=strategy.id,
             file_name=strategy_create.file_name
         )
@@ -141,7 +141,7 @@ class StrategiesService:
                 if field == "file_name":
                     file_updated = True
                     existing_strategy.asset_key = get_file_key(
-                        file_type=FileType.TESTIMONIAL,
+                        file_type=FileType.STRATEGIES,
                         entity_id=existing_strategy.id,
                         file_name=strategy_update.file_name
                     )

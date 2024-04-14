@@ -52,7 +52,7 @@ class LinkService:
         )
 
         link.logo_key = get_file_key(
-            file_type=FileType.TESTIMONIAL,
+            file_type=FileType.LINK,
             entity_id=link.id,
             file_name=link_create.file_name
         )
@@ -134,7 +134,7 @@ class LinkService:
                 if field == "file_name":
                     file_updated = True
                     existing_link.logo_key = get_file_key(
-                        file_type=FileType.TESTIMONIAL,
+                        file_type=FileType.LINK,
                         entity_id=existing_link.id,
                         file_name=link_update.file_name
                     )

@@ -53,7 +53,7 @@ class CompanyRelationshipService:
         )
 
         company_relationship.logo_key = get_file_key(
-            file_type=FileType.TESTIMONIAL,
+            file_type=FileType.COMPANY_RELATIONSHIP,
             entity_id=company_relationship.id,
             file_name=company_relationship_create.file_name
         )
@@ -135,7 +135,7 @@ class CompanyRelationshipService:
                 if field == "file_name":
                     file_updated = True
                     existing_company_relationship.logo_key = get_file_key(
-                        file_type=FileType.TESTIMONIAL,
+                        file_type=FileType.COMPANY_RELATIONSHIP,
                         entity_id=existing_company_relationship.id,
                         file_name=company_relationship_update.file_name
                     )

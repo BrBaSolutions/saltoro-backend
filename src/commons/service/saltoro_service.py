@@ -52,7 +52,7 @@ class SaltoroService:
         )
 
         saltoro.logo_key = get_file_key(
-            file_type=FileType.TESTIMONIAL,
+            file_type=FileType.SALTORO,
             entity_id=saltoro.id,
             file_name=saltoro_create.file_name
         )
@@ -134,7 +134,7 @@ class SaltoroService:
                 if field == "file_name":
                     file_updated = True
                     existing_saltoro.logo_key = get_file_key(
-                        file_type=FileType.TESTIMONIAL,
+                        file_type=FileType.SALTORO,
                         entity_id=existing_saltoro.id,
                         file_name=saltoro_update.file_name
                     )

@@ -17,7 +17,8 @@ class ContactUsDao:
             contact_us: ContactUs
     ) -> ContactUs:
         try:
-            contact_us.save(self.db)
+            self.db.add(contact_us)
+            self.db.commit()
             return contact_us
         except Exception as e:
             handle_db_error(

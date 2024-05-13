@@ -1,4 +1,5 @@
 import boto3
+from botocore.config import Config
 from starlette import status
 
 from src.commons.client.config_client import ConfigClient
@@ -15,7 +16,10 @@ class S3Client:
     def __new__(cls, *args, **kwargs):
         if cls._instance is None:
             cls._instance = super(S3Client, cls).__new__(cls, *args, **kwargs)
-            cls._instance.client = boto3.client('s3')
+            cls._instance.client = boto3.client(
+                's3',
+                config=Config(signature_version='s3v4')
+            )
         return cls._instance
 
     @staticmethod
